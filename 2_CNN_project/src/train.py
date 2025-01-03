@@ -149,7 +149,7 @@ def optimize(data_loaders, model, optimizer, loss, n_epochs, save_path, interact
             logs["val_loss"] = valid_loss
             logs["lr"] = optimizer.param_groups[0]["lr"]
             liveloss.update(logs)          
-            if epoch % 40 == 0:
+            if epoch % (n_epochs + 1) == 0:
                 liveloss.send()
 
 
