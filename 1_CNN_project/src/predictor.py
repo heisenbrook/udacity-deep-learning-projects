@@ -1,57 +1,67 @@
+import os
+
 import torch
-import torch.nn as nn
-import torch.optim
+import numpy as np
+from torch import nn
+import torch.nn.functional as F
+from tqdm import tqdm
+from torchvision import datasets
+import torchvision.transforms as T
+from .helpers import get_data_location
 
 
-def get_loss():
-    """
-    Get an instance of the CrossEntropyLoss (useful for classification),
-    optionally moving it to the GPU if use_cuda is set to True
-    """
+class Predictor(nn.Module):
 
-    # YOUR CODE HERE: select a loss appropriate for classification
-    loss  = nn.CrossEntropyLoss()
+    def __init__(self, model, class_names, mean, std):
+        super().__init__()
 
-    return loss
+        self.model = model.eval()
+        self.class_names = class_names
 
-
-def get_optimizer(
-    model: nn.Module,
-    optimizer: str = "SGD",
-    learning_rate: float = 0.01,
-    momentum: float = 0.5,
-    weight_decay: float = 0,
-):
-    """
-    Returns an optimizer instance
-
-    :param model: the model to optimize
-    :param optimizer: one of 'SGD' or 'Adam'
-    :param learning_rate: the learning rate
-    :param momentum: the momentum (if the optimizer uses it)
-    :param weight_decay: regularization coefficient
-    """
-    if optimizer.lower() == "sgd":
-        # YOUR CODE HERE: create an instance of the SGD
-        # optimizer. Use the input parameters learning_rate, momentum
-        # and weight_decay
-        opt = torch.optim.SGD(
-            model.parameters(),
-            lr = learning_rate,
-            momentum = momentum,
-            weight_decay = weight_decay
+        # We use nn.Sequential and not nn.Compose because the former
+        # is compatible with torch.script, while the latter isn't
+        self.transforms = nn.Sequential(
+            T.Resize([256, ]),  # We use single int value inside a list due to torchscript type restrictions
+            T.CenterCrop(224),
+            T.ConvertImageDtype(torch.float),
+            T.Normalize(mean.tolist(), std.tolist())
         )
 
-    elif optimizer.lower() == "adam":
-        # YOUR CODE HERE: create an instance of the Adam
-        # optimizer. Use the input parameters learning_rate, momentum
-        # and weight_decay
-        opt = torch.optim.Adam(
-            model.parameters(),
-            lr = learning_rate,
-            weight_decay = weight_decay
-        )
-    else:
-        raise ValueError(f"Optimizer {optimizer} not supported")
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        with torch.no_grad():
+            # 1. apply transforms
+            x  = self.transforms(x)
+            # 2. get the logits
+            x  = self.model(x)
+            # 3. apply softmax
+            #    HINT: remmeber to apply softmax across dim=1
+            x  = F.softmax(x, dim=1)
 
-    return opt
+            return x
+
+
+def predictor_test(test_dataloader, model_reloaded):
+    """
+    Test the predictor. Since the predictor does not operate on the same tensors
+    as the non-wrapped model, we need a specific test function (can't use one_epoch_test)
+    """
+
+    folder = get_data_location()
+    test_data = datasets.ImageFolder(os.path.join(folder, "test"), transform=T.ToTensor())
+
+    pred = []
+    truth = []
+    for x in tqdm(test_data, total=len(test_dataloader.dataset), leave=True, ncols=80):
+        softmax = model_reloaded(x[0].unsqueeze(dim=0))
+
+        idx = softmax.squeeze().argmax()
+
+        pred.append(int(x[1]))
+        truth.append(int(idx))
+
+    pred = np.array(pred)
+    truth = np.array(truth)
+
+    print(f"Accuracy: {(pred==truth).sum() / pred.shape[0]}")
+
+    return truth, pred
