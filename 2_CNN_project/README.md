@@ -13,3 +13,10 @@ Experiment with different architectures, hyperparameters, training strategies, a
 The second part of this task will involve transfer learning. Let's see how hard it is to match that performance with transfer learning.
 
 The third and last part will be about building a simple app that uses our exported model
+
+Go to a search engine for images (like Google Images) and search for images of some of the landmarks, like the Eiffel Tower, the Golden Gate Bridge, Machu Picchu and so on. Save a few examples locally, then upload them to your app to see how your model behaves!
+
+The app will show the top 5 classes that the model think are most relevant for the picture you have uploaded
+
+For more instructions on how to deploy this app as a website using Binder:
+https://voila.readthedocs.io/en/stable/deploy.html#deployment-on-binder
