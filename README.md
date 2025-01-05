@@ -4,8 +4,7 @@
 
 ### First project - MNIST Handwritten digits
 
-
-
+In the first project, you will build a neural network of your own design to evaluate the MNIST dataset.
 
 
 ### Second project - CNN - Algorithms for landmark classification
