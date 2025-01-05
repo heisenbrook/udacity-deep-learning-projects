@@ -20,3 +20,10 @@ The app will show the top 5 classes that the model think are most relevant for t
 
 For more instructions on how to deploy this app as a website using Binder:
 https://voila.readthedocs.io/en/stable/deploy.html#deployment-on-binder
+
+or you can run the notebook ``app.ipynb`` as a standalone app on your computer by following these steps:
+
+1. Download this notebook in a directory on your machine
+2. Download the model export (for example, ``checkpoints/transfer_exported.pt``) in a subdirectory called ``checkpoints`` within the directory where you save the ``app.ipynb`` notebook
+3. Install voila if you don't have it already (``pip install voila``)
+4. Run your app: ``voila app.ipynb --show_tracebacks=True``
