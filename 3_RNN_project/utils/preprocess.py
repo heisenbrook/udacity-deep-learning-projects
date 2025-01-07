@@ -35,3 +35,10 @@ def translate(text: str, model, tokenizer) -> str:
     # decode the generated output and return the translated text
     decoded = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return decoded
+
+def analyze_sentiment(text, classifier):
+    """
+    function to perform sentiment analysis on a text using a model
+    """
+    sentiment = classifier(text)
+    return sentiment[0]
