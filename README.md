@@ -16,3 +16,10 @@ The very first assignment is to design and train a CNN from scratch and get a te
 The second assignment is to use transfer learning and compare the results with the first assignment.
 
 The third and last part will be about building a simple interactive app with the exported model.
+
+### Third project - Text Translation and Sentiment Analysis using Transformers
+
+The objective of this project is to analyze the sentiment of movie reviews in three different languages - English, French, and Spanish of 3 different datasets, using a pretrained model.
+
+The output of the project will be a CSV file with a header row that includes column names such as **Title**, **Year**, **Synopsis**, **Review**, **Review Sentiment**, and **Original Language**. The Original Language column will indicate the language of the review and synopsis (*en/fr/sp*) before translation. The dataframe will consist of 30 rows, with each row corresponding to a movie.
+
