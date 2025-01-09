@@ -11,3 +11,5 @@ This dataset has higher resolution images than datasets you have previously work
 
 2. Pre-processed Data
 Since the project's main focus is on building the GANs, we've done some of the pre-processing for you. Each of the CelebA images has been cropped to remove parts of the image that don't include a face, then resized down to 64x64x3 NumPy images.
+
+The archive containing the images has been splitted into smaller archives and are available in ``/archives`` repo.
