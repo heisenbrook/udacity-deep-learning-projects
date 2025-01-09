@@ -5,7 +5,7 @@ import numpy as np
 import torch
 import os
 from PIL import Image
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset
 from torchvision.transforms import Compose, ToTensor, Resize, Normalize
 
 def get_transforms(size: Tuple[int, int]) -> Callable:
@@ -29,7 +29,6 @@ class DatasetDirectory(Dataset):
                  directory: str, 
                  transforms: Callable = None, 
                  extension: str = '.jpg'):
-        # TODO: implement the init method
         self.directory = directory
         self.transforms = transforms
         self.extension = extension
@@ -38,10 +37,8 @@ class DatasetDirectory(Dataset):
 
     def __len__(self) -> int:
         """ returns the number of items in the dataset """
-        # TODO: return the number of elements in the dataset
         return self.image_path.__len__()
 
     def __getitem__(self, index: int) -> torch.Tensor:
         """ load an image and apply transformation """
-        # TODO: return the index-element of the dataset
         return self.transforms(Image.open(self.image_path[index]))
