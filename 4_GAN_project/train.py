@@ -78,7 +78,7 @@ for epoch in tqdm(range(n_epochs),
         d = d_loss['loss'].item()
         losses.append((d, g))
 
-    if (epoch) % 100 == 1:
+    if (epoch) % 100 == 1 or epoch == n_epochs:
         generator.eval()
         generated_images = generator(fixed_latent_vector)  
         for i, image in enumerate(generated_images):
