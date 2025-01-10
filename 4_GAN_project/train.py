@@ -86,7 +86,8 @@ for epoch in tqdm(range(n_epochs),
             image = np.transpose(image, (1, 2, 0))
             image_d = denormalize(image)
             filename = f'Image_{i+1}_epoch_{epoch}.png'
-            path = os.path.join(save_dir, filename, cv2.cvtColor(image_d, cv2.COLOR_RGB2BGR))  
+            path = os.path.join(save_dir, filename) 
+            cv2.cvtColor(image_d, cv2.COLOR_RGB2BGR) 
             cv2.imwrite(path, image_d)
 
 display_graph(losses)
