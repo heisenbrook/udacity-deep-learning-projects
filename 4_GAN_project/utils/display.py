@@ -14,6 +14,7 @@ def display_graph(losses):
     plt.plot(losses.T[1], label='Generator', alpha=0.5)
     plt.title("Training Losses")
     plt.legend()
+    plt.savefig('generated_images/loss_graph/loss_graph.png', bbox_inches='tight')
     plt.show()
 
 
