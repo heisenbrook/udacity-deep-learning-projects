@@ -30,4 +30,4 @@ def save_image(generated_images, epoch, save_dir):
         image_d = image_d.resize((256,256),Image.Resampling.LANCZOS)
         filename = f'Image_{i+1}_epoch_{epoch}'
         path = os.path.join(save_dir, filename) 
-        image_d.save(path, format='png')
+        image_d.save(path, format='.png')
