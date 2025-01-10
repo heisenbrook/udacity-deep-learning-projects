@@ -1,8 +1,6 @@
 import numpy as np
-import cv2
 import os
-import matplotlib.pyplot as plt
-from datetime import datetime
+from PIL import Image
 from torch.utils.data import DataLoader
 from utils.display import display_graph, denormalize
 from utils.models import Generator, Discriminator
@@ -85,9 +83,9 @@ for epoch in tqdm(range(n_epochs),
             image = image.detach().cpu().numpy()
             image = np.transpose(image, (1, 2, 0))
             image_d = denormalize(image)
-            image_d = cv2.imread(image_d)
-            filename = f'Image_{i+1}_epoch_{epoch}.png'
+            image_d = Image.fromarray(image_d, mode='RGB')
+            filename = f'Image_{i+1}_epoch_{epoch}'
             path = os.path.join(save_dir, filename) 
-            cv2.imwrite(path, image_d)
+            image_d.save(path, format='png')
 
 display_graph(losses)
