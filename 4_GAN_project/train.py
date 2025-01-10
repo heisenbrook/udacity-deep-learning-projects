@@ -41,7 +41,7 @@ dataloader = DataLoader(dataset,
                         shuffle=True,  
                         drop_last=True,
                         num_workers=4,
-                        pin_memory=False)
+                        pin_memory=True)
 
 fixed_latent_vector = torch.randn(8, latent_dim, 1, 1).float().to(device)
 
