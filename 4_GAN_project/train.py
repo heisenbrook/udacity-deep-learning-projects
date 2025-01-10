@@ -89,4 +89,4 @@ for epoch in tqdm(range(n_epochs),
             path = os.path.join(save_dir, filename)  
             cv2.imwrite(path, image_d)
 
-        display_graph(losses)
+display_graph(losses)
