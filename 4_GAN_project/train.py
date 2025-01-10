@@ -85,7 +85,7 @@ for epoch in tqdm(range(n_epochs),
             image = image.detach().cpu().numpy()
             image = np.transpose(image, (1, 2, 0))
             image_d = denormalize(image)
-            filename = f'Image_{i+1}_epoch_{epoch +1}.jpeg'
+            filename = f'Image_{i+1}_epoch_{epoch +1}.jpg'
             path = os.path.join(save_dir, filename)  
             cv2.imwrite(path, image_d)
         
