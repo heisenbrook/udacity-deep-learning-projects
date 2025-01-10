@@ -76,9 +76,9 @@ for epoch in tqdm(range(n_epochs),
         d = d_loss['loss'].item()
         losses.append((d, g))
 
-    if (epoch -1) in np.linspace(1, n_epochs, num=(n_epochs//50), dtype=int):
+    if (epoch + 1) in np.linspace(1, n_epochs, num=(n_epochs//50), dtype=int):
         generator.eval()
         generated_images = generator(fixed_latent_vector)  
-        save_image(generated_images, (epoch -1), save_dir)
+        save_image(generated_images, (epoch + 1), save_dir)
 
 display_graph(losses)
