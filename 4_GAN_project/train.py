@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 from torch.utils.data import DataLoader
-from utils.display import denormalize, display_graph
+from utils.display import display_graph
 from utils.models import Generator, Discriminator
 from utils.preprocess import DatasetDirectory, get_transforms
 from utils.optimization import create_optimizers, generator_step, discriminator_step
@@ -84,9 +84,8 @@ for epoch in tqdm(range(n_epochs),
         for i, image in enumerate(generated_images):
             image = image.detach().cpu().numpy()
             image = np.transpose(image, (1, 2, 0))
-            image_d = denormalize(image)
             filename = f'Image_{i+1}_epoch_{epoch}.jpg'
             path = os.path.join(save_dir, filename)  
-            cv2.imwrite(path, image_d)
+            cv2.imwrite(path, image)
 
 display_graph(losses)
