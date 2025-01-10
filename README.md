@@ -23,3 +23,6 @@ The objective of this project is to analyze the sentiment of movie reviews in th
 
 The output of the project will be a CSV file with a header row that includes column names such as **Title**, **Year**, **Synopsis**, **Review**, **Review Sentiment**, and **Original Language**. The Original Language column will indicate the language of the review and synopsis (*en/fr/sp*) before translation. The dataframe will consist of 30 rows, with each row corresponding to a movie.
 
+### Fourth project - Face generation with GAN
+
+This project is about defining and training a Generative Adverserial network on a dataset of faces. The goal is to get a generator network to generate and save new images of faces that look as realistic as possible.
