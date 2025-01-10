@@ -2,7 +2,7 @@ import numpy as np
 import os
 from PIL import Image
 from torch.utils.data import DataLoader
-from utils.display import display_graph, denormalize
+from utils.display import display_graph, denormalize, save_image
 from utils.models import Generator, Discriminator
 from utils.preprocess import DatasetDirectory, get_transforms
 from utils.optimization import create_optimizers, generator_step, discriminator_step
@@ -79,14 +79,6 @@ for epoch in tqdm(range(n_epochs),
     if epoch in np.linspace(1, n_epochs, num=(n_epochs//50), dtype=int):
         generator.eval()
         generated_images = generator(fixed_latent_vector)  
-        for i, image in enumerate(generated_images):
-            image = image.detach().cpu().numpy()
-            image = np.transpose(image, (1, 2, 0))
-            image_d = denormalize(image)
-            image_d = Image.fromarray(image_d, mode='RGB')
-            image_d = image_d.resize((256,256),Image.Resampling.LANCZOS)
-            filename = f'Image_{i+1}_epoch_{epoch}'
-            path = os.path.join(save_dir, filename) 
-            image_d.save(path, format='png')
+        save_image(generated_images, epoch, save_dir)
 
 display_graph(losses)
