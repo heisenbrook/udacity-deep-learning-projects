@@ -4,16 +4,14 @@ import matplotlib.pyplot as plt
 
 
 
-def display(fixed_latent_vector: torch.Tensor):
+def display_graph(losses):
     """ helper function to display images during training """
-    fig = plt.figure(figsize=(14, 4))
-    plot_size = 16
-    for idx in np.arange(plot_size):
-        ax = fig.add_subplot(2, int(plot_size/2), idx+1, xticks=[], yticks=[])
-        img = fixed_latent_vector[idx, ...].detach().cpu().numpy()
-        img = np.transpose(img, (1, 2, 0))
-        img = denormalize(img)
-        ax.imshow(img)
+    fig, ax = plt.subplots()
+    losses = np.array(losses)
+    plt.plot(losses.T[0], label='Discriminator', alpha=0.5)
+    plt.plot(losses.T[1], label='Generator', alpha=0.5)
+    plt.title("Training Losses")
+    plt.legend()
     plt.show()
 
 

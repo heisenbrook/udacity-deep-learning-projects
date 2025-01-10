@@ -4,7 +4,7 @@ import os
 import matplotlib.pyplot as plt
 from datetime import datetime
 from torch.utils.data import DataLoader
-from utils.display import denormalize
+from utils.display import denormalize, display_graph
 from utils.models import Generator, Discriminator
 from utils.preprocess import DatasetDirectory, get_transforms
 from utils.optimization import create_optimizers, generator_step, discriminator_step
@@ -22,7 +22,7 @@ else:
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # number of epochs to train your model
-n_epochs = 500
+n_epochs = 300
 
 # number of images in each batch
 batch_size = 256
@@ -78,22 +78,15 @@ for epoch in tqdm(range(n_epochs),
         d = d_loss['loss'].item()
         losses.append((d, g))
 
-    if (epoch) % 100 == 0 or epoch == n_epochs:
+    if (epoch) % 100 == 1 or epoch == n_epochs:
         generator.eval()
         generated_images = generator(fixed_latent_vector)  
         for i, image in enumerate(generated_images):
             image = image.detach().cpu().numpy()
             image = np.transpose(image, (1, 2, 0))
             image_d = denormalize(image)
-            filename = f'Image_{i+1}_epoch_{epoch +1}.jpg'
+            filename = f'Image_{i+1}_epoch_{epoch -1}.jpg'
             path = os.path.join(save_dir, filename)  
             cv2.imwrite(path, image_d)
-        
 
-
-fig, ax = plt.subplots()
-losses = np.array(losses)
-plt.plot(losses.T[0], label='Discriminator', alpha=0.5)
-plt.plot(losses.T[1], label='Generator', alpha=0.5)
-plt.title("Training Losses")
-plt.legend()
+        display_graph(losses)
