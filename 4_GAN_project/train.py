@@ -84,7 +84,7 @@ for epoch in tqdm(range(n_epochs),
             image = np.transpose(image, (1, 2, 0))
             image_d = denormalize(image)
             image_d = Image.fromarray(image_d, mode='RGB')
-            image_d = Image.new(size=(256, 256))
+            image_d = Image.new(mode='RGB', size=(256, 256))
             filename = f'Image_{i+1}_epoch_{epoch}'
             path = os.path.join(save_dir, filename) 
             image_d.save(path, format='png')
