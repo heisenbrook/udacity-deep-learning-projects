@@ -1,10 +1,8 @@
 import numpy as np
-import cv2
 import os
-import matplotlib.pyplot as plt
-from datetime import datetime
+from PIL import Image
 from torch.utils.data import DataLoader
-from utils.display import denormalize, display_graph
+from utils.display import display_graph, denormalize, save_image
 from utils.models import Generator, Discriminator
 from utils.preprocess import DatasetDirectory, get_transforms
 from utils.optimization import create_optimizers, generator_step, discriminator_step
@@ -22,7 +20,7 @@ else:
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # number of epochs to train your model
-n_epochs = 300
+n_epochs = 500
 
 # number of images in each batch
 batch_size = 256
@@ -40,10 +38,10 @@ dataloader = DataLoader(dataset,
                         batch_size=batch_size, 
                         shuffle=True,  
                         drop_last=True,
-                        num_workers=4,
+                        num_workers=6,
                         pin_memory=True)
 
-fixed_latent_vector = torch.randn(8, latent_dim, 1, 1).float().to(device)
+fixed_latent_vector = torch.randn(4, latent_dim, 1, 1).float().to(device)
 
 losses = []
 num_steps = 2
@@ -78,15 +76,9 @@ for epoch in tqdm(range(n_epochs),
         d = d_loss['loss'].item()
         losses.append((d, g))
 
-    if epoch in np.linspace(1, n_epochs, num=(n_epochs//100), dtype=int):
+    if (epoch + 1) in np.linspace(1, n_epochs, num=(n_epochs//50), dtype=int):
         generator.eval()
         generated_images = generator(fixed_latent_vector)  
-        for i, image in enumerate(generated_images):
-            image = image.detach().cpu().numpy()
-            image = np.transpose(image, (1, 2, 0))
-            image_d = denormalize(image)
-            filename = f'Image_{i+1}_epoch_{epoch}.jpg'
-            path = os.path.join(save_dir, filename)  
-            cv2.imwrite(path, image_d)
+        save_image(generated_images, (epoch + 1), save_dir)
 
 display_graph(losses)
