@@ -8,7 +8,7 @@ from tqdm import tqdm
 import torch
 
 # you can experiment with different dimensions of latent spaces
-latent_dim = 512
+latent_dim = 256
 
 # update to cpu if you do not have access to a gpu
 if torch.cuda.is_available():
@@ -18,7 +18,7 @@ else:
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # number of epochs to train your model
-n_epochs = 300
+n_epochs = 1000
 
 # number of images in each batch
 batch_size = 256
