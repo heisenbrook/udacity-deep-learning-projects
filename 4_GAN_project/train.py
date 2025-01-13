@@ -1,8 +1,6 @@
 import numpy as np
-import os
-from PIL import Image
 from torch.utils.data import DataLoader
-from utils.display import display_graph, denormalize, save_image
+from utils.display import display_graph, save_image
 from utils.models import Generator, Discriminator
 from utils.preprocess import DatasetDirectory, get_transforms
 from utils.optimization import create_optimizers, generator_step, discriminator_step
@@ -10,7 +8,7 @@ from tqdm import tqdm
 import torch
 
 # you can experiment with different dimensions of latent spaces
-latent_dim = 128
+latent_dim = 512
 
 # update to cpu if you do not have access to a gpu
 if torch.cuda.is_available():
@@ -38,7 +36,7 @@ dataloader = DataLoader(dataset,
                         batch_size=batch_size, 
                         shuffle=True,  
                         drop_last=True,
-                        num_workers=6,
+                        num_workers=4,
                         pin_memory=True)
 
 fixed_latent_vector = torch.randn(4, latent_dim, 1, 1).float().to(device)
@@ -46,6 +44,7 @@ fixed_latent_vector = torch.randn(4, latent_dim, 1, 1).float().to(device)
 losses = []
 num_steps = 2
 
+# Training loops
 for epoch in tqdm(range(n_epochs), 
                     desc='Epoch', 
                     total=n_epochs,
