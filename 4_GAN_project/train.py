@@ -18,7 +18,7 @@ else:
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # number of epochs to train your model
-n_epochs = 500
+n_epochs = 300
 
 # number of images in each batch
 batch_size = 256
