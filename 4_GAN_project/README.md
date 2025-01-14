@@ -6,10 +6,10 @@
  Some examples:
 
 
- ![](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_1_epoch_1000|width=10)
- ![](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_2_epoch_1000|width=10)
- ![](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_3_epoch_1000|width=10)
- ![](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_4_epoch_1000|width=10)
+ <img src= 'https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_1_epoch_1000' width="64" height="64" />
+ <img src= 'https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_2_epoch_1000' width="64" height="64" />
+ <img src= 'https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_3_epoch_1000' width="64" height="64" />
+ <img src= 'https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_4_epoch_1000' width="64" height="64" />
 
 1. Get the Data:
 
