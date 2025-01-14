@@ -6,10 +6,10 @@
  Some examples:
 
 
- ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_1_epoch_1000)
- ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_2_epoch_1000)
- ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_3_epoch_1000)
- ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_4_epoch_1000)
+ <small> ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_1_epoch_1000)
+ <small> ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_2_epoch_1000)
+ <small> ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_3_epoch_1000)
+ <small> ![Alt text](https://github.com/heisenbrook/udacity-deep-learning-projects/blob/main/4_GAN_project/generated_images/Image_4_epoch_1000)
 
 1. Get the Data:
 
