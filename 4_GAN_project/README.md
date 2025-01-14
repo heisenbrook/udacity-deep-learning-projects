@@ -2,7 +2,12 @@
 
  This project will focus on define and train a Generative Adverserial network on a dataset of faces. The goal is to get a generator network to generate new images of faces that look as realistic as possible.
 
- The project will be broken down into a series of tasks from defining new architectures training adversarial networks. At the end the generated samples should look like fairly realistic faces with small amounts of noise. They can be found in ``/generated_images`` repo
+ The project will be broken down into a series of tasks from defining new architectures training adversarial networks. At the end the generated samples should look like fairly realistic faces with small amounts of noise. They can be found in ``/generated_images`` repo.
+ Some examples:
+ ![Alt text](4_GAN_project/generated_images/Image_1_epoch_1000)
+ ![Alt text](4_GAN_project/generated_images/Image_2_epoch_1000)
+ ![Alt text](4_GAN_project/generated_images/Image_3_epoch_1000)
+ ![Alt text](4_GAN_project/generated_images/Image_4_epoch_1000)
 
 1. Get the Data
  The CelebFaces Attributes Dataset (CelebA) will be used to train the adversarial networks. It is suggested the use of a GPU for training.
