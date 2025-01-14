@@ -1,4 +1,4 @@
-# udacity-deep-learning-projects
+# Udacity-deep-learning-projects
 ## Projects from Udacity deep learning course
 
 
