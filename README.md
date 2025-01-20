@@ -1,15 +1,15 @@
 # Udacity-deep-learning-projects
 ## Projects from Udacity deep learning course
-
+The Udacity Deep Learning course includes a series of hands-on projects designed to develop practical expertise in neural networks and deep learning techniques.
 
 ### First project - MNIST Handwritten digits
 
- The first project will be about a deisgned neural network for classification tested against the MNIST dataset of hadwritten digits. 
+The first project involves designing a custom neural network to tackle a classification task using the MNIST dataset of handwritten digits. The model is trained and evaluated to achieve optimal accuracy in recognizing digit patterns.
 
 
 ### Second project - CNN - Algorithms for landmark classification
 
-The second project is from the CNN part of the course and it is about writing an algorithm for landmark classification.
+The second project, part of the convolutional neural networks (CNN) module, focuses on developing an algorithm for landmark classification.
 
 1. The very first assignment is to design and train a CNN from scratch and get a test accuracy of at least 50%.
 
@@ -17,12 +17,12 @@ The second project is from the CNN part of the course and it is about writing an
 
 3. The third and last part will be about building a simple interactive app with the exported model.
 
+
 ### Third project - Text Translation and Sentiment Analysis using Transformers
 
-The objective of this project is to analyze the sentiment of movie reviews in three different languages - English, French, and Spanish of 3 different datasets, using a pretrained model.
+The third project aims to analyze sentiment in movie reviews across three different languages—English, French, and Spanish—using three distinct datasets. A pre-trained model is utilized to classify the sentiment and provide insights into language-specific sentiment trends.
 
-The output of the project will be a CSV file with a header row that includes column names such as **Title**, **Year**, **Synopsis**, **Review**, **Review Sentiment**, and **Original Language**. The Original Language column will indicate the language of the review and synopsis (*en/fr/sp*) before translation. 
 
 ### Fourth project - Face generation with GAN
 
-This project is about defining and training a Generative Adverserial network on a dataset of faces. The goal is to get a generator network to generate and save new images of faces that look as realistic as possible.
+In the fourth project, a Generative Adversarial Network (GAN) is designed and trained on a dataset of facial images. The objective is to generate and store new, realistic face images that closely resemble human features.
